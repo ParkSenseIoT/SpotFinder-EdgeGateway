@@ -134,10 +134,12 @@ ESP32 node ──POST sensor-readings (X-API-Key, 1/sec)──▶ EDGE ──buf
                                           (next step) ──▶ SpotFinder cloud backend
 ```
 
-## Not wired up yet (next steps)
+## Configuration & next steps
 
-- **Cloud forwarding.** Consolidated occupancy/emergency events are not yet
-  pushed to the Spring Boot backend (`/api/v1/sensor-readings`, `/api/v1/emergency/alerts`).
-- **Thresholds from the backend.** `OCCUPIED_CM`, `SUSTAINED_SECONDS` and
+- **Cloud forwarding (implemented, optional).** Set `SPOTFINDER_BACKEND_URL`
+  (e.g. `http://192.168.1.40:8080`) to forward consolidated events to the Spring
+  Boot backend on stable status change / gas emergency
+  (`/api/v1/sensor-readings`, `/api/v1/emergency/alerts`). Unset = fully offline.
+- **Thresholds from the backend (next).** `OCCUPIED_CM`, `SUSTAINED_SECONDS` and
   `GAS_THRESHOLD` are constants today; they are meant to be fetched/cached from the cloud.
 - **Access Control.** The barrier flow (sessions, payment) is intentionally out of scope here.
